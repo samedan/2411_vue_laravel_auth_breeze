@@ -42,3 +42,7 @@
 # Tailwind Play Console
 
 > https://play.tailwindcss.com/
+
+### Create default user
+
+> php artisan migrate:fresh --seed

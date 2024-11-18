@@ -20,3 +20,25 @@
 
 > composer require laravel/breeze --dev
 > php artisan breeze:install api
+
+### Frontend
+
+> Indicate server URL: /src/axios.js -> axios.defaults.baseURL = "http://localhost:8000";
+
+## Create State
+
+> npm install pinia
+> main.js -> import { createPinia } from "pinia";
+
+## Create router
+
+> /src/rouer/index.js
+> main.js -> app.use(pinia); app.use(router);
+
+## Tailwind CSS
+
+> https://tailwindcss.com/docs/guides/vite#vue
+
+# Tailwind Play Console
+
+> https://play.tailwindcss.com/

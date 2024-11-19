@@ -55,3 +55,7 @@
 
 > /src/stores/auth.js
 > main/js -> pinia.use(({ store }))
+
+### Reset password
+
+> mailtrap

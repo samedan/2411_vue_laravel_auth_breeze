@@ -6,7 +6,7 @@
             class="container mx-auto flex flex-wrap items-center justify-between"
             bis_skin_checked="1"
         >
-            <a href="" class="flex items-center"> Laravel-ler </a>
+            <a href="/" class="flex items-center"> Laravel-ler </a>
             <button
                 data-collapse-toggle="navbar-default"
                 type="button"

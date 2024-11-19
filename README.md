@@ -1,6 +1,10 @@
 ### Source
 
-> https://www.youtube.com/watch?v=YS0MV285KW4
+> https://youtu.be/YS0MV285KW4?si=u9-dFd23c5HhUuh6&t=3524
+
+# Playlist
+
+> https://www.youtube.com/watch?v=_NevyJBb8fQ&list=PL6tf8fRbavl0dycX-GrPWArIQK_caqZjq&index=8
 
 # Source Git
 

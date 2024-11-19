@@ -50,3 +50,8 @@
 ### Create default user
 
 > php artisan migrate:fresh --seed
+
+### Auth STore throughout the app
+
+> /src/stores/auth.js
+> main/js -> pinia.use(({ store }))

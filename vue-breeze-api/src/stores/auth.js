@@ -4,9 +4,11 @@ import axios from "axios";
 export const useAuthStore = defineStore("auth", {
     state: () => ({
         authUser: null,
+        authErrors: [],
     }),
     getters: {
         user: (state) => state.authUser,
+        errors: (state) => state.authErrors,
     },
     actions: {
         async getToken() {
@@ -18,32 +20,54 @@ export const useAuthStore = defineStore("auth", {
             this.authUser = data.data;
         },
         async handleLogin(data) {
+            this.authErrors = [];
             await this.getToken();
-            await axios.post("/login", {
-                email: data.email,
-                password: data.password,
-            });
-            // acces to router comes from main.js -> useRaw
-            this.router.push("/");
+            try {
+                await axios.post("/login", {
+                    email: data.email,
+                    password: data.password,
+                });
+                // acces to router comes from main.js -> useRaw
+                this.router.push("/");
+            } catch (error) {
+                if (error.response.status === 422) {
+                    this.authErrors = error.response.data.errors;
+                }
+            }
         },
         async handleRegister(data) {
             await this.getToken();
-            await axios.post("/register", {
-                name: data.name,
-                email: data.email,
-                password: data.password,
-                password_confirmation: data.password_confirmation,
-            });
-            this.router.push("/");
+            this.authErrors = [];
+            try {
+                await axios.post("/register", {
+                    name: data.name,
+                    email: data.email,
+                    password: data.password,
+                    password_confirmation: data.password_confirmation,
+                });
+                this.router.push("/");
+            } catch (error) {
+                if (error.response.status === 422) {
+                    this.authErrors = error.response.data.errors;
+                }
+            }
         },
         async handleLogout() {
             await axios.post("/logout");
             this.authUser = null;
         },
         async handleForgotPassword(email) {
-            await axios.post("/forgot-password", {
-                email: email,
-            });
+            await this.getToken();
+            this.authErrors = [];
+            try {
+                await axios.post("/forgot-password", {
+                    email: email,
+                });
+            } catch (error) {
+                if (error.response.status === 422) {
+                    this.authErrors = error.response.data.errors;
+                }
+            }
         },
     },
 });

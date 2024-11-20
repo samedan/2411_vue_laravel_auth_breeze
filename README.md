@@ -58,4 +58,7 @@
 
 ### Reset password
 
-> mailtrap
+> mailtrap -> localhost/password-reset/80_Token_a711ba?email=email@test.com
+> localhost/password-reset/80_Token_a711ba?email=email@test.com
+> router/index.js -> path: "/password-reset/:token"
+> ResetPasssword.vue -> form = ref({ password: "",password_confirmation: "", email: route.query.email, token: route.params.token, });
